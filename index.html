@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<!-- saved from url=(0032)http://127.0.0.1:5500/index.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- ✅ Makes it mobile-friendly -->
   <title>Missing You 🐼❤️</title>
   <style>
     body {
@@ -11,24 +12,30 @@
       text-align: center;
       color: #333;
       overflow: hidden;
+      padding: 0 10px;
     }
+
     h1 {
-      font-size: 3rem;
-      margin-top: 40px;
+      font-size: clamp(1.8rem, 4vw, 3rem); /* ✅ scales with screen */
+      margin-top: 30px;
       color: #2c3e50;
       animation: fadeIn 2s ease-in-out;
     }
+
     p {
-      font-size: 1.3rem;
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
       margin: 20px auto;
-      width: 70%;
+      width: 90%; /* ✅ fits small screens */
+      max-width: 700px;
     }
+
     .panda {
-      width: 180px;
+      width: clamp(120px, 30vw, 200px); /* ✅ scales image */
       margin: 20px auto 10px auto;
       animation: bounce 2s infinite alternate;
       display: block;
     }
+
     .hearts {
       position: fixed;
       top: 0;
@@ -38,6 +45,7 @@
       pointer-events: none;
       z-index: -1;
     }
+
     .heart {
       position: absolute;
       font-size: 28px;
@@ -45,30 +53,37 @@
       text-shadow: 0 0 8px rgba(255, 0, 0, 0.8), 0 0 15px rgba(255, 0, 0, 0.6);
       animation: fall 6s linear infinite;
     }
+
     @keyframes fall {
       0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
       100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
     }
+
     @keyframes fadeIn {
       from {opacity: 0;}
       to {opacity: 1;}
     }
+
     @keyframes bounce {
       0% { transform: translateY(0); }
-      100% { transform: translateY(-20px); }
+      100% { transform: translateY(-15px); }
     }
+
     button {
       display: block;
-      margin: 10px auto;
+      margin: 15px auto;
       padding: 12px 25px;
-      font-size: 1.1rem;
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
       border: none;
       border-radius: 25px;
       background: #ff6f61;
       color: white;
       cursor: pointer;
       transition: 0.3s;
+      max-width: 250px;
+      width: 80%; /* ✅ mobile friendly */
     }
+
     button:hover {
       background: #e74c3c;
     }
@@ -79,13 +94,13 @@
   <p>Every day feels empty without you… but thinking of your smile makes my heart happy! 💕</p>
 
   <!-- Cute Panda -->
-  <img src="./index_files/twitter-sad.gif" alt="Cute Panda" class="panda">
+  <img src="twitter-sad.gif" alt="Cute Panda" class="panda">
 
   <!-- Surprise button links to another page -->
-  <button onclick="window.location.href=&#39;message.html&#39;">Click here...❤️🐼</button>
+  <button onclick="window.location.href='message.html'">Click here...❤️🐼</button>
 
   <!-- Floating glowing hearts -->
-  <div class="hearts"><div class="heart" style="left: 62.8999vw; font-size: 36.0265px; animation-duration: 3.8588s;">❤️</div><div class="heart" style="left: 85.5966vw; font-size: 27.2259px; animation-duration: 7.45621s;">❤️</div><div class="heart" style="left: 17.9605vw; font-size: 24.7398px; animation-duration: 6.89166s;">❤️</div><div class="heart" style="left: 78.615vw; font-size: 21.7996px; animation-duration: 8.34353s;">❤️</div><div class="heart" style="left: 47.4773vw; font-size: 38.9745px; animation-duration: 5.46991s;">❤️</div><div class="heart" style="left: 38.555vw; font-size: 48.5469px; animation-duration: 6.55234s;">❤️</div><div class="heart" style="left: 22.844vw; font-size: 26.4015px; animation-duration: 6.23436s;">❤️</div><div class="heart" style="left: 19.6242vw; font-size: 32.039px; animation-duration: 6.04598s;">❤️</div><div class="heart" style="left: 81.1116vw; font-size: 27.4766px; animation-duration: 6.15312s;">❤️</div><div class="heart" style="left: 64.4869vw; font-size: 22.0294px; animation-duration: 4.51038s;">❤️</div><div class="heart" style="left: 33.6906vw; font-size: 44.184px; animation-duration: 3.14469s;">❤️</div><div class="heart" style="left: 74.9589vw; font-size: 47.7246px; animation-duration: 6.71296s;">❤️</div><div class="heart" style="left: 29.6327vw; font-size: 38.803px; animation-duration: 4.49161s;">❤️</div><div class="heart" style="left: 2.42201vw; font-size: 22.5519px; animation-duration: 8.53221s;">❤️</div><div class="heart" style="left: 65.9881vw; font-size: 46.1821px; animation-duration: 6.4866s;">❤️</div><div class="heart" style="left: 86.0668vw; font-size: 34.1603px; animation-duration: 3.70548s;">❤️</div></div>
+  <div class="hearts"></div>
 
   <script>
     // Falling glowing hearts
@@ -102,44 +117,5 @@
     }
     setInterval(createHeart, 500);
   </script>
-<!-- Code injected by live-server -->
-<script>
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
-</script>
-
-
-</body></html>
+</body>
+</html>
